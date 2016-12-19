@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-firebase-bot",
+  "version": "1.0.0",
+  "description": "NodeJS Firebase Polymer Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NerveClasp/nodejs-firebase-bot.git"
+  },
+  "author": "Romka Boroda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NerveClasp/nodejs-firebase-bot/issues"
+  },
+  "homepage": "https://github.com/NerveClasp/nodejs-firebase-bot#readme",
+  "dependencies": {
+    "twitter": "^1.7.0"
+  }
+}
