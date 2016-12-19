@@ -15,12 +15,32 @@ admin.initializeApp({
 });
 const db = admin.database();
 const ref = db.ref("/added");
-let firstEntry = {
-  text: "Second Tweet! How you doin'?)\nGoing Good! Recording our second video",
-  id: 0,
-  id_str: ""
-};
+
+let tweets = [{
+  text: "Third tweet! This time almost automatic",
+  valid: false
+},{
+  text: "Fourth tweet. Because why not",
+  valid: false
+},{
+  text: "Fifth tweet. Someone, please stop me :)",
+  valid: false
+}];
 // ref.push(firstEntry);
+// for (var i = 0; i < tweets.length; i++) {
+//   ref.push(tweets[i]);
+// }
+
+ref.on("child_changed", function(snap) {
+  var tweet = snap.val();
+  if (tweet.valid) {
+    postTweet(tweet.text, snap.key);
+    // console.log(tweet.text);
+  }
+  // console.log(tweet);
+});
+
+/*
 ref.on("value", function(snapshot) {
   let val = snapshot.val();
   let key = "-KZMAotA5O3MLkGbbNJj";
@@ -34,12 +54,24 @@ ref.child("-KZMAotA5O3MLkGbbNJj").on('value', function (snap) {
   postTweet(val.text);
   // console.log(val.text);
 });
-
-let postTweet = function(text){
+*/
+let postTweet = function(text, key){
   client.post('statuses/update',
       {status: text},
       function(error, tweet, response) {
     if(error) throw error;
+    let details = {
+      id: tweet.id,
+      id_str: tweet.id_str,
+      user: {
+        usr_id: tweet.user.id,
+        usr_id_str: tweet.user.id_str,
+        usr_name: tweet.user.name,
+        usr_screen_name: "@"+tweet.user.screen_name
+      },
+      tweeted: true
+    }
+    ref.child(key).update(details);
     console.log("Tweeted!", text);
     console.log(tweet);  // Tweet body.
     // console.log(response);  // Raw response object.
