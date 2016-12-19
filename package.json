@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/NerveClasp/nodejs-firebase-bot#readme",
   "dependencies": {
+    "firebase-admin": "^4.0.4",
     "twitter": "^1.7.0"
   }
 }
