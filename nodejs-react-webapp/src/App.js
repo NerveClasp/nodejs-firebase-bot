@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddTweet from './components/AddTweet';
 import './App.css';
+import TweetQueue from './components/TweetQueue'
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
           <h2>Welcome to Beardy Tutorials</h2>
         </div>
         <AddTweet />
+        < TweetQueue />
       </div>
     );
   }
