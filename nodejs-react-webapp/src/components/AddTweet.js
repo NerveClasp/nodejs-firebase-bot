@@ -7,7 +7,8 @@ class AddTweet extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       tweet: 'Будь ласка, напиши свій твіт:)',
-      header : 'Будь ласка, напиши свій твіт:)'
+      header: 'Хей, напиши-ка свій влучний твіт!',
+      placeholder: 'Ідеальний Час, Щоб...'
     };
     this.handleAddTweet = this.handleAddTweet.bind(this);
   }
@@ -32,7 +33,7 @@ class AddTweet extends Component {
           < div className="addTweetHeader" > {
               this.state.header
         } < /div>
-        <textarea id="newTweet" onChange={this.handleChange} />
+        <textarea id="newTweet" placeholder={this.state.placeholder} onChange={this.handleChange} />
         
           </div>
           <button id="newTweetBtn" onClick={this.handleAddTweet}>Додати твіт</button>
