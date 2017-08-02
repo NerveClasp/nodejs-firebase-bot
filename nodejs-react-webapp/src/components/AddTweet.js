@@ -5,7 +5,10 @@ class AddTweet extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.state = { tweet: 'Будь ласка, напиши свій твіт:)' };
+    this.state = {
+      tweet: 'Будь ласка, напиши свій твіт:)',
+      header : 'Будь ласка, напиши свій твіт:)'
+    };
     this.handleAddTweet = this.handleAddTweet.bind(this);
   }
   
@@ -19,16 +22,21 @@ class AddTweet extends Component {
     fire.database()
       .ref('added')
       .push({ text: this.state.tweet, added: false });
-    this.setState({ tweet: "Круто! Давай ще!" });
+    this.setState({ header: "Круто! Давай ще!" });
     document.getElementById("newTweet").value = "";
   }
   render() {
     return (
+      <div className="wrapper">
       <div className="AddTweet">
-        <div>{this.state.tweet}</div>
+          < div className="addTweetHeader" > {
+              this.state.header
+        } < /div>
         <textarea id="newTweet" onChange={this.handleChange} />
-        <button id="addTweet" onClick={this.handleAddTweet}>Додати Твіт</button>
-      </div>
+        
+          </div>
+          <button id="newTweetBtn" onClick={this.handleAddTweet}>Додати твіт</button>
+      < /div>
     );
   }
 }

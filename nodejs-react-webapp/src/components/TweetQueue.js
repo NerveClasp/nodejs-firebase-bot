@@ -29,7 +29,7 @@ class TweetQueue extends Component {
         { /* Render the list of messages */
           this.state
             .tweetsInQueue
-            .map(tweet => <div key={tweet.id}>{tweet.text}</div>)
+            .map(tweet => <div className="tweetsQueue" key={tweet.id}>{tweet.text}</div>)
         }
       </div>
     );
